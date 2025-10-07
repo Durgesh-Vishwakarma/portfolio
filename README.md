@@ -6,7 +6,7 @@
   ![Version](https://img.shields.io/badge/version-1.0.0-D4B896?style=for-the-badge)
   ![License](https://img.shields.io/badge/license-MIT-6B5B4F?style=for-the-badge)
 
-  ### 🌐 [View Live Demo](http://localhost:3000) | [📖 Documentation](#-installation--setup) | [🐛 Report Bug](https://github.com/yourusername/simplefolio-mern/issues)
+  ### 🌐 [View Live Demo](https://portfolio-kappa-seven-j4ycbplqj1.vercel.app/) | [📖 Documentation](#-installation--setup) | [🐛 Report Bug](https://github.com/Durgesh-Vishwakarma/portfolio)
 
   <p align="center">
     <strong>A modern, full-stack portfolio website built with the MERN stack</strong>
