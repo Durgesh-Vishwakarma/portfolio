@@ -20,11 +20,7 @@
 
 ## 📸 Preview
 
-<div align="center">
-  <img src="client/public/profile.jpg" alt="Portfolio Preview" width="800px" style="border-radius: 10px; box-shadow: 0 4px 20px rgba(107, 91, 79, 0.15);">
-  
-  *Professional portfolio with smooth animations and responsive design*
-</div>
+
 
 ---
 
