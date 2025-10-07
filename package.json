@@ -1,0 +1,24 @@
+{
+  "name": "simplefolio-mern",
+  "version": "1.0.0",
+  "description": "MERN Stack Portfolio with Tailwind CSS",
+  "scripts": {
+    "install-all": "cd client && npm install && cd ../server && npm install",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "seed": "cd server && npm run seed"
+  },
+  "keywords": [
+    "mern",
+    "portfolio",
+    "react",
+    "tailwind"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
