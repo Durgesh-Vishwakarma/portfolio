@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="MovieHub film discovery app preview">
+  <defs>
+    <linearGradient id="mBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A0D14"/>
+      <stop offset="60%" stop-color="#0E1420"/>
+      <stop offset="100%" stop-color="#080A10"/>
+    </linearGradient>
+    <linearGradient id="mAmber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F5C518"/>
+      <stop offset="100%" stop-color="#E0A800"/>
+    </linearGradient>
+    <linearGradient id="p1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2A3A5C"/><stop offset="100%" stop-color="#16203A"/>
+    </linearGradient>
+    <linearGradient id="p2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4A2A3C"/><stop offset="100%" stop-color="#2A1626"/>
+    </linearGradient>
+    <linearGradient id="p3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#20423E"/><stop offset="100%" stop-color="#122622"/>
+    </linearGradient>
+    <linearGradient id="p4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3E3350"/><stop offset="100%" stop-color="#221C30"/>
+    </linearGradient>
+    <radialGradient id="mGlow" cx="20%" cy="25%" r="55%">
+      <stop offset="0%" stop-color="#F5C518" stop-opacity=".16"/>
+      <stop offset="100%" stop-color="#F5C518" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#mBg)"/>
+  <rect width="1200" height="750" fill="url(#mGlow)"/>
+
+  <!-- browser chrome -->
+  <rect x="0" y="0" width="1200" height="52" fill="#05070C" opacity=".9"/>
+  <circle cx="30" cy="26" r="6" fill="#FF5F57"/>
+  <circle cx="52" cy="26" r="6" fill="#FEBC2E"/>
+  <circle cx="74" cy="26" r="6" fill="#28C840"/>
+  <rect x="110" y="14" width="380" height="24" rx="12" fill="#121722"/>
+  <text x="128" y="31" font-family="ui-monospace,monospace" font-size="13" fill="#5D6980">imdb-mocha-six.vercel.app</text>
+
+  <!-- brand + search -->
+  <rect x="72" y="98" width="42" height="26" rx="6" fill="url(#mAmber)"/>
+  <text x="80" y="117" font-family="Inter,sans-serif" font-size="15" font-weight="800" fill="#0A0D14">MH</text>
+  <text x="126" y="118" font-family="Inter,sans-serif" font-size="19" font-weight="700" fill="#EEF2F8">MovieHub</text>
+
+  <rect x="700" y="94" width="428" height="36" rx="18" fill="#141A26" stroke="#232B3C"/>
+  <circle cx="726" cy="112" r="7" fill="none" stroke="#5D6980" stroke-width="2"/>
+  <line x1="731" y1="117" x2="736" y2="122" stroke="#5D6980" stroke-width="2" stroke-linecap="round"/>
+  <text x="750" y="117" font-family="Inter,sans-serif" font-size="14" fill="#5D6980">Search 500,000+ titles…</text>
+
+  <!-- headline -->
+  <text x="72" y="200" font-family="ui-monospace,monospace" font-size="13" letter-spacing="4" fill="#F5C518">POWERED BY THE OMDB API</text>
+  <text x="72" y="266" font-family="Inter,sans-serif" font-size="54" font-weight="800" fill="#F4F7FB" letter-spacing="-1.5">Find your next film</text>
+  <text x="72" y="326" font-family="Inter,sans-serif" font-size="54" font-weight="800" fill="url(#mAmber)" letter-spacing="-1.5">in seconds.</text>
+
+  <!-- filter pills -->
+  <g font-family="Inter,sans-serif" font-size="13" fill="#9AA6BC">
+    <rect x="72" y="368" width="86" height="30" rx="15" fill="#1B2130" stroke="#F5C518"/>
+    <text x="94" y="388" fill="#F5C518" font-weight="600">All</text>
+    <rect x="168" y="368" width="94" height="30" rx="15" fill="#141A26" stroke="#232B3C"/>
+    <text x="190" y="388">Movies</text>
+    <rect x="272" y="368" width="94" height="30" rx="15" fill="#141A26" stroke="#232B3C"/>
+    <text x="296" y="388">Series</text>
+    <rect x="376" y="368" width="86" height="30" rx="15" fill="#141A26" stroke="#232B3C"/>
+    <text x="398" y="388">2020s</text>
+  </g>
+
+  <!-- poster grid -->
+  <g>
+    <rect x="72" y="432" width="238" height="212" rx="14" fill="url(#p1)" stroke="#232B3C"/>
+    <rect x="96" y="600" width="120" height="11" rx="5.5" fill="#4A5670"/>
+    <rect x="270" y="450" width="26" height="20" rx="6" fill="url(#mAmber)"/>
+    <text x="276" y="465" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="#0A0D14">8.4</text>
+  </g>
+  <g>
+    <rect x="330" y="432" width="238" height="212" rx="14" fill="url(#p2)" stroke="#232B3C"/>
+    <rect x="354" y="600" width="146" height="11" rx="5.5" fill="#4A5670"/>
+    <rect x="528" y="450" width="26" height="20" rx="6" fill="url(#mAmber)"/>
+    <text x="534" y="465" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="#0A0D14">7.9</text>
+  </g>
+  <g>
+    <rect x="588" y="432" width="238" height="212" rx="14" fill="url(#p3)" stroke="#232B3C"/>
+    <rect x="612" y="600" width="104" height="11" rx="5.5" fill="#4A5670"/>
+    <rect x="786" y="450" width="26" height="20" rx="6" fill="url(#mAmber)"/>
+    <text x="792" y="465" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="#0A0D14">9.1</text>
+  </g>
+  <g>
+    <rect x="846" y="432" width="238" height="212" rx="14" fill="url(#p4)" stroke="#232B3C"/>
+    <rect x="870" y="600" width="132" height="11" rx="5.5" fill="#4A5670"/>
+    <rect x="1044" y="450" width="26" height="20" rx="6" fill="url(#mAmber)"/>
+    <text x="1050" y="465" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="#0A0D14">8.0</text>
+  </g>
+
+  <text x="72" y="694" font-family="Inter,sans-serif" font-size="14" fill="#4A5670">React · Debounced search · Movie API integration · Responsive grid</text>
+  <text x="1128" y="694" text-anchor="end" font-family="ui-monospace,monospace" font-size="13" fill="#F5C518">Live demo</text>
+</svg>

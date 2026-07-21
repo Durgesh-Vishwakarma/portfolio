@@ -1,49 +1,70 @@
 import mongoose from 'mongoose'
 
-const portfolioSchema = new mongoose.Schema({
-  hero: {
-    name: {
-      type: String,
-      required: true,
-      default: 'Your Name'
+const portfolioSchema = new mongoose.Schema(
+  {
+    hero: {
+      name: { type: String, required: true, default: 'Durgesh Vishwakarma' },
+      title: { type: String, required: true, default: 'Full Stack Developer' },
+      tagline: { type: String, default: '' },
+      intro: { type: String, default: '' },
+      location: { type: String, default: '' },
+      availability: { type: String, default: '' },
+      stats: [
+        {
+          _id: false,
+          value: String,
+          label: String,
+        },
+      ],
     },
-    title: {
-      type: String,
-      required: true,
-      default: 'Full Stack Developer'
-    }
-  },
-  about: {
-    image: {
-      type: String,
-      default: '/profile.jpg'
+
+    about: {
+      image: { type: String, default: '/profile.jpg' },
+      resumeUrl: { type: String, default: '/resume.pdf' },
+      headline: { type: String, default: '' },
+      paragraphs: [{ type: String }],
+      principles: [{ _id: false, title: String, desc: String }],
+      skillGroups: [{ _id: false, label: String, items: [String] }],
     },
-    paragraphs: [{
-      type: String
-    }],
-    resumeUrl: {
-      type: String,
-      default: '/resume.pdf'
-    }
-  },
-  contact: {
-    text: {
-      type: String,
-      default: 'Would you like to work with me? Awesome!'
+
+    experience: [
+      {
+        _id: false,
+        role: String,
+        company: String,
+        location: String,
+        period: String,
+        current: { type: Boolean, default: false },
+        points: [String],
+        stack: [String],
+      },
+    ],
+
+    education: {
+      degree: String,
+      school: String,
+      period: String,
+      detail: String,
     },
-    email: {
-      type: String,
-      required: true
-    }
+
+    contact: {
+      heading: { type: String, default: "Let's build something" },
+      text: { type: String, default: '' },
+      email: { type: String, required: true },
+      altEmail: String,
+      phone: String,
+      location: String,
+      responseTime: String,
+    },
+
+    social: {
+      github: String,
+      linkedin: String,
+      email: String,
+    },
   },
-  social: {
-    twitter: String,
-    linkedin: String,
-    github: String
-  }
-}, {
-  timestamps: true
-})
+  { timestamps: true }
+)
 
 const Portfolio = mongoose.model('Portfolio', portfolioSchema)
 

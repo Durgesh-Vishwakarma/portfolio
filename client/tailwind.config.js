@@ -1,79 +1,61 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#6B5B4F',
-          light: '#8B7766',
-          dark: '#4A3F35',
+        ink: {
+          950: '#08090B',
+          900: '#0C0E12',
+          850: '#111318',
+          800: '#16181E',
+          700: '#1E2128',
+          600: '#282C35',
+          500: '#3A3F4A',
         },
-        secondary: {
-          DEFAULT: '#9C8273',
-          light: '#B59A8A',
-          dark: '#7A6256',
+        mist: {
+          100: '#F2F4F7',
+          200: '#D8DDE5',
+          300: '#AFB7C2',
+          400: '#8A929E',
+          500: '#6B727D',
         },
         accent: {
-          wheat: '#D4B896',
-          sand: '#C9B18C',
-          coffee: '#5C4A42',
-          cream: '#F5EDE4',
-        },
-        dark: {
-          DEFAULT: '#2C2623',
-          light: '#3D3530',
-          lighter: '#4F4740',
+          DEFAULT: '#5EEAD4',
+          soft: '#99F6E4',
+          deep: '#14B8A6',
+          alt: '#A78BFA',
         },
       },
       fontFamily: {
-        sans: ['Montserrat', 'sans-serif'],
-        display: ['Poppins', 'sans-serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gradient-primary': 'linear-gradient(135deg, #6B5B4F 0%, #9C8273 100%)',
-        'gradient-dark': 'linear-gradient(135deg, #2C2623 0%, #3D3530 100%)',
-        'gradient-warm': 'linear-gradient(135deg, #D4B896 0%, #C9B18C 100%)',
+      fontSize: {
+        '5xl': ['3rem', { lineHeight: '1.08', letterSpacing: '-0.025em' }],
+        '6xl': ['3.75rem', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
+        '7xl': ['4.5rem', { lineHeight: '1.02', letterSpacing: '-0.035em' }],
       },
       boxShadow: {
-        'warm': '0 4px 20px rgba(107, 91, 79, 0.15)',
-        'warm-lg': '0 10px 40px rgba(107, 91, 79, 0.2)',
-        'glass': '0 8px 32px 0 rgba(44, 38, 35, 0.1)',
-        'glow': '0 0 30px rgba(156, 130, 115, 0.3)',
-        'xl-colored': '0 20px 50px -12px rgba(107, 91, 79, 0.25)',
+        card: '0 1px 2px rgba(0,0,0,.3), 0 8px 32px -12px rgba(0,0,0,.6)',
+        lift: '0 20px 50px -20px rgba(0,0,0,.85)',
+        ring: '0 0 0 1px rgba(94,234,212,.25), 0 0 40px -12px rgba(94,234,212,.35)',
       },
       animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'gradient': 'gradient 8s linear infinite',
-        'shimmer': 'shimmer 2s linear infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
+        'fade-up': 'fadeUp .7s cubic-bezier(.16,1,.3,1) both',
+        marquee: 'marquee 34s linear infinite',
+        blink: 'blink 1.15s steps(2, start) infinite',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(18px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        gradient: {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
-        shimmer: {
-          '0%': { backgroundPosition: '-1000px 0' },
-          '100%': { backgroundPosition: '1000px 0' },
-        },
-        glow: {
-          '0%': { boxShadow: '0 0 20px rgba(2, 170, 176, 0.5)' },
-          '100%': { boxShadow: '0 0 40px rgba(0, 205, 172, 0.8)' },
-        },
-      },
-      backdropBlur: {
-        xs: '2px',
+        blink: { '0%,100%': { opacity: '1' }, '50%': { opacity: '0' } },
       },
     },
   },

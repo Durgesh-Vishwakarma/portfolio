@@ -1,167 +1,148 @@
 import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { FaChevronDown } from 'react-icons/fa'
+import { FaArrowRight, FaGithub, FaLinkedin } from 'react-icons/fa'
+import { HiOutlineDocumentText } from 'react-icons/hi'
 
-const Hero = ({ data }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+const TICKER = [
+  'React',
+  'Next.js',
+  'TypeScript',
+  'Node.js',
+  'Express',
+  'MongoDB',
+  'PostgreSQL',
+  'React Native',
+  'Docker',
+  'Tailwind CSS',
+  'Jest',
+  'REST APIs',
+]
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-      },
-    },
-  }
+const item = {
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+}
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.5, 0, 0, 1],
-      },
-    },
-  }
-
+const Hero = ({ data, social }) => {
   return (
     <section
-      id="hero"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-neutral-900 text-white px-4 relative overflow-hidden"
+      id="top"
+      className="relative grid min-h-[100svh] items-center overflow-hidden pb-24 pt-28 sm:pt-32"
+      aria-labelledby="hero-heading"
     >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-wheat/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.15, 0.3, 0.15],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+      <div className="grid-bg absolute inset-0 opacity-70" aria-hidden="true" />
+      <div className="glow-orb -left-32 top-0 h-[520px] w-[520px] bg-accent/10" aria-hidden="true" />
+      <div className="glow-orb -right-40 bottom-0 h-[460px] w-[460px] bg-accent-alt/10" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-ink-950 to-transparent"
+        aria-hidden="true"
+      />
+
+      <div className="container-page relative z-10">
+        <motion.div initial="hidden" animate="show" transition={{ staggerChildren: 0.09 }} className="max-w-3xl">
+          <motion.p variants={item} className="mb-6 flex items-center gap-2.5">
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            <span className="font-mono text-xs uppercase tracking-[0.18em] text-mist-300">
+              {data?.availability || 'Open to opportunities'}
+            </span>
+          </motion.p>
+
+          <motion.h1
+            id="hero-heading"
+            variants={item}
+            className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
+          >
+            <span className="text-gradient">{data?.name || 'Durgesh Vishwakarma'}</span>
+          </motion.h1>
+
+          <motion.p variants={item} className="mt-4 font-mono text-base text-accent sm:text-lg">
+            {data?.title || 'Full Stack Developer'}
+            <span className="mx-2 text-ink-500">/</span>
+            <span className="text-mist-400">{data?.tagline || 'MERN · Node.js'}</span>
+          </motion.p>
+
+          <motion.p variants={item} className="mt-7 max-w-2xl text-base leading-relaxed text-mist-300 sm:text-lg">
+            {data?.intro}
+          </motion.p>
+
+          <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-3">
+            <a href="#projects" className="btn-primary group">
+              View my work
+              <FaArrowRight
+                className="text-xs transition-transform group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </a>
+            <a href="#contact" className="btn-ghost">
+              Get in touch
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="btn text-mist-300 hover:text-accent"
+            >
+              <HiOutlineDocumentText className="text-base" aria-hidden="true" />
+              Résumé
+            </a>
+          </motion.div>
+
+          <motion.ul variants={item} className="mt-10 flex items-center gap-3">
+            <li>
+              <a
+                href={social?.github}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="GitHub profile"
+                className="grid h-10 w-10 place-items-center rounded-xl border border-ink-700 text-mist-300 transition-colors hover:border-accent/50 hover:text-accent"
+              >
+                <FaGithub />
+              </a>
+            </li>
+            <li>
+              <a
+                href={social?.linkedin}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="LinkedIn profile"
+                className="grid h-10 w-10 place-items-center rounded-xl border border-ink-700 text-mist-300 transition-colors hover:border-accent/50 hover:text-accent"
+              >
+                <FaLinkedin />
+              </a>
+            </li>
+            <li className="ml-1 font-mono text-xs text-mist-500">{data?.location}</li>
+          </motion.ul>
+        </motion.div>
+
+        <motion.dl
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-16 grid max-w-3xl grid-cols-3 gap-px overflow-hidden rounded-2xl border border-ink-700 bg-ink-700"
+        >
+          {(data?.stats || []).map((s) => (
+            <div key={s.label} className="bg-ink-900 px-4 py-5 sm:px-6">
+              <dt className="sr-only">{s.label}</dt>
+              <dd>
+                <span className="block text-2xl font-bold text-white sm:text-3xl">{s.value}</span>
+                <span className="mt-1 block text-xs leading-snug text-mist-400 sm:text-sm">{s.label}</span>
+              </dd>
+            </div>
+          ))}
+        </motion.dl>
       </div>
 
-      <motion.div
-        ref={ref}
-        className="container mx-auto text-center relative z-10 max-w-5xl"
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
-      >
-        {/* Greeting Badge */}
-        <motion.div
-          variants={itemVariants}
-          className="inline-block mb-6"
-        >
-          <span className="bg-accent-wheat/20 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-medium border border-accent-wheat/30 text-accent-wheat">
-            👋 Welcome to my portfolio
-          </span>
-        </motion.div>
-
-        {/* Main Title */}
-        <motion.h1
-          className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-4"
-          variants={itemVariants}
-        >
-          <span className="block text-stone-300 mb-2 text-lg md:text-xl font-normal">
-            Hi, I'm
-          </span>
-          <span className="block text-white">
-            {data?.name || 'Your Name'}
-          </span>
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          className="text-xl md:text-2xl mb-6 font-light text-accent-wheat"
-          variants={itemVariants}
-        >
-          {data?.title || 'Full Stack Developer'}
-        </motion.p>
-
-        {/* Description */}
-        <motion.p
-          className="text-base md:text-lg text-stone-300 max-w-2xl mx-auto mb-10 leading-relaxed"
-          variants={itemVariants}
-        >
-          Crafting exceptional digital experiences with modern technologies
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div 
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
-        >
-          <a
-            href="#projects"
-            className="px-8 py-3 bg-stone-800/50 backdrop-blur-sm border-2 border-accent-wheat/40 text-accent-wheat font-semibold rounded-lg hover:bg-stone-800/70 hover:border-accent-wheat transition-all duration-300 transform hover:scale-105"
-          >
-            View My Work
-          </a>
-          <a
-            href="#contact"
-            className="px-8 py-3 bg-stone-800/50 backdrop-blur-sm border-2 border-accent-wheat/40 text-accent-wheat font-semibold rounded-lg hover:bg-stone-800/70 hover:border-accent-wheat transition-all duration-300 transform hover:scale-105"
-          >
-            Get In Touch
-          </a>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="flex justify-center"
-        >
-          <motion.a
-            href="#about"
-            className="flex flex-col items-center text-stone-400 hover:text-accent-wheat transition-colors cursor-pointer group"
-            animate={{
-              y: [0, 10, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <span className="text-xs mb-2 uppercase tracking-wider font-medium">Scroll</span>
-            <div className="w-6 h-10 border-2 border-stone-400 group-hover:border-accent-wheat rounded-full flex items-start justify-center p-2 transition-colors">
-              <motion.div
-                className="w-1.5 h-1.5 bg-accent-wheat rounded-full"
-                animate={{
-                  y: [0, 12, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-            </div>
-          </motion.a>
-        </motion.div>
-      </motion.div>
+      <div className="mask-fade-x absolute inset-x-0 bottom-0 z-10 overflow-hidden border-t border-ink-800 py-4">
+        <div className="flex w-max animate-marquee gap-8" aria-hidden="true">
+          {[...TICKER, ...TICKER].map((t, i) => (
+            <span key={`${t}-${i}`} className="whitespace-nowrap font-mono text-xs text-ink-500">
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }

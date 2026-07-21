@@ -2,17 +2,218 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio - Full Stack Developer" />
-    <meta name="keywords" content="developer, portfolio, mern stack, react, node" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>Portfolio | Developer</title>
+    <meta name="theme-color" content="#08090B" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Primary meta -->
+    <title>Durgesh Vishwakarma — Full Stack MERN Developer, Mumbai</title>
+    <meta
+      name="description"
+      content="Durgesh Vishwakarma is a full stack developer in Mumbai with 2+ years building production web and mobile apps with React, Next.js, Node.js, Express, MongoDB and PostgreSQL. See live projects, experience and résumé."
+    />
+    <meta
+      name="keywords"
+      content="Durgesh Vishwakarma, full stack developer Mumbai, MERN stack developer, React developer India, Node.js developer, React Native developer, MongoDB, Express, Next.js portfolio, hire full stack developer"
+    />
+    <meta name="author" content="Durgesh Vishwakarma" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://durgesh-portfolio.vercel.app/" />
+
+    <!-- Icons & manifest -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Durgesh Vishwakarma — Portfolio" />
+    <meta property="og:title" content="Durgesh Vishwakarma — Full Stack Developer (MERN, React, Node.js)" />
+    <meta
+      property="og:description"
+      content="Full stack developer in Mumbai building production web and mobile apps with React, Next.js, Node.js, Express, MongoDB and PostgreSQL. Four live projects, experience and résumé."
+    />
+    <meta property="og:url" content="https://durgesh-portfolio.vercel.app/" />
+    <meta property="og:image" content="https://durgesh-portfolio.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Durgesh Vishwakarma — Full Stack Developer, MERN, React Native, Node.js" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="profile:first_name" content="Durgesh" />
+    <meta property="profile:last_name" content="Vishwakarma" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Durgesh Vishwakarma — Full Stack Developer (MERN, React, Node.js)" />
+    <meta
+      name="twitter:description"
+      content="Full stack developer in Mumbai. React, Next.js, Node.js, Express, MongoDB, PostgreSQL. Four live projects and a downloadable résumé."
+    />
+    <meta name="twitter:image" content="https://durgesh-portfolio.vercel.app/og-image.png" />
+    <meta name="twitter:image:alt" content="Durgesh Vishwakarma — Full Stack Developer" />
+
+    <!-- Performance hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/og-image.png" fetchpriority="low" />
+
+    <!-- Structured data: Person + WebSite + portfolio items -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://durgesh-portfolio.vercel.app/#person",
+            "name": "Durgesh Vishwakarma",
+            "givenName": "Durgesh",
+            "familyName": "Vishwakarma",
+            "jobTitle": "Full Stack Developer",
+            "description": "Full stack developer with 2+ years of experience building web and mobile applications using React, React Native, Node.js, Express, MongoDB and PostgreSQL.",
+            "url": "https://durgesh-portfolio.vercel.app/",
+            "image": "https://durgesh-portfolio.vercel.app/profile.jpg",
+            "email": "mailto:vishwakarmadurgesh21@gmail.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Mumbai",
+              "addressRegion": "Maharashtra",
+              "addressCountry": "IN"
+            },
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "Mumbai University"
+            },
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Servora"
+            },
+            "knowsAbout": [
+              "React.js",
+              "Next.js",
+              "React Native",
+              "TypeScript",
+              "Node.js",
+              "Express.js",
+              "MongoDB",
+              "PostgreSQL",
+              "REST API design",
+              "JWT authentication",
+              "Docker",
+              "Tailwind CSS",
+              "Unit and integration testing"
+            ],
+            "sameAs": [
+              "https://github.com/Durgesh-Vishwakarma",
+              "https://www.linkedin.com/in/durgesh-vishwakarma-94ab91228/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://durgesh-portfolio.vercel.app/#website",
+            "url": "https://durgesh-portfolio.vercel.app/",
+            "name": "Durgesh Vishwakarma — Full Stack Developer Portfolio",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://durgesh-portfolio.vercel.app/#person" }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://durgesh-portfolio.vercel.app/#profilepage",
+            "url": "https://durgesh-portfolio.vercel.app/",
+            "name": "Durgesh Vishwakarma — Full Stack Developer",
+            "isPartOf": { "@id": "https://durgesh-portfolio.vercel.app/#website" },
+            "about": { "@id": "https://durgesh-portfolio.vercel.app/#person" },
+            "primaryImageOfPage": "https://durgesh-portfolio.vercel.app/og-image.png"
+          },
+          {
+            "@type": "ItemList",
+            "name": "Selected projects",
+            "itemListOrder": "https://schema.org/ItemListOrderAscending",
+            "numberOfItems": 4,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "ShopSphere",
+                  "applicationCategory": "WebApplication",
+                  "operatingSystem": "Web",
+                  "url": "https://shop-sphere-steel.vercel.app/",
+                  "description": "Full-stack MERN e-commerce platform with product catalogue, search and filtering, cart, wishlist, orders, user profiles and an admin dashboard secured with JWT and role-based access control.",
+                  "author": { "@id": "https://durgesh-portfolio.vercel.app/#person" },
+                  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "AI Notes",
+                  "applicationCategory": "WebApplication",
+                  "operatingSystem": "Web",
+                  "url": "https://ai-notes-app-pi.vercel.app/",
+                  "description": "Note-taking application with AI-powered summarization via the Hugging Face API, tagging and full-text search over structured notes.",
+                  "author": { "@id": "https://durgesh-portfolio.vercel.app/#person" },
+                  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "GlowUp Salon & Spa",
+                  "applicationCategory": "WebApplication",
+                  "operatingSystem": "Web",
+                  "url": "https://glow-up-salon-flax.vercel.app/",
+                  "description": "Mobile-first website for a salon and spa in Bandra West, Mumbai, with a service menu, stylist profiles, gallery and online appointment booking.",
+                  "author": { "@id": "https://durgesh-portfolio.vercel.app/#person" },
+                  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "MovieHub",
+                  "applicationCategory": "WebApplication",
+                  "operatingSystem": "Web",
+                  "url": "https://imdb-mocha-six.vercel.app/",
+                  "description": "Film and series discovery app with debounced search across a public movie API, type and decade filters, and a responsive poster grid.",
+                  "author": { "@id": "https://durgesh-portfolio.vercel.app/#person" },
+                  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Crawler / no-JS fallback: ensures the page is never empty to a bot. -->
+      <noscript>
+        <h1>Durgesh Vishwakarma — Full Stack Developer</h1>
+        <p>
+          Full stack developer based in Mumbai, India, with 2+ years of experience building web and mobile
+          applications using React, React Native, Next.js, Node.js, Express, MongoDB and PostgreSQL.
+        </p>
+        <h2>Selected projects</h2>
+        <ul>
+          <li><a href="https://shop-sphere-steel.vercel.app/">ShopSphere — full-stack e-commerce platform</a></li>
+          <li><a href="https://ai-notes-app-pi.vercel.app/">AI Notes — notes with instant AI summaries</a></li>
+          <li><a href="https://glow-up-salon-flax.vercel.app/">GlowUp Salon &amp; Spa — Bandra West, Mumbai</a></li>
+          <li><a href="https://imdb-mocha-six.vercel.app/">MovieHub — film discovery app</a></li>
+        </ul>
+        <h2>Contact</h2>
+        <p><a href="mailto:vishwakarmadurgesh21@gmail.com">vishwakarmadurgesh21@gmail.com</a></p>
+        <p><a href="/resume.pdf">Download résumé (PDF)</a></p>
+        <p>This site requires JavaScript for the full experience.</p>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

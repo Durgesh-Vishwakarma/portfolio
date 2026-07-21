@@ -1,0 +1,19 @@
+{
+  "name": "Durgesh Vishwakarma — Full Stack Developer",
+  "short_name": "Durgesh V.",
+  "description": "Portfolio of Durgesh Vishwakarma, a full stack developer in Mumbai working with React, Next.js, Node.js, Express, MongoDB and PostgreSQL.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#08090B",
+  "theme_color": "#08090B",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

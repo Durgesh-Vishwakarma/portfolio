@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block nothing — this is a public portfolio.
+Disallow:
+
+Sitemap: https://durgesh-portfolio.vercel.app/sitemap.xml

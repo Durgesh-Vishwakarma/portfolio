@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="GlowUp Salon and Spa website preview">
+  <defs>
+    <linearGradient id="gBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A1017"/>
+      <stop offset="55%" stop-color="#221520"/>
+      <stop offset="100%" stop-color="#120C11"/>
+    </linearGradient>
+    <linearGradient id="gRose" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5C6D6"/>
+      <stop offset="100%" stop-color="#C98BA4"/>
+    </linearGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E8C88A"/>
+      <stop offset="100%" stop-color="#C9A45E"/>
+    </linearGradient>
+    <radialGradient id="gGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#E8A0BE" stop-opacity=".35"/>
+      <stop offset="100%" stop-color="#E8A0BE" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#gBg)"/>
+  <rect width="1200" height="750" fill="url(#gGlow)"/>
+
+  <!-- browser chrome -->
+  <rect x="0" y="0" width="1200" height="52" fill="#0B0709" opacity=".85"/>
+  <circle cx="30" cy="26" r="6" fill="#FF5F57"/>
+  <circle cx="52" cy="26" r="6" fill="#FEBC2E"/>
+  <circle cx="74" cy="26" r="6" fill="#28C840"/>
+  <rect x="110" y="14" width="420" height="24" rx="12" fill="#1B1218"/>
+  <text x="128" y="31" font-family="ui-monospace,monospace" font-size="13" fill="#8C7580">glow-up-salon-flax.vercel.app</text>
+
+  <!-- nav -->
+  <text x="72" y="122" font-family="Georgia,serif" font-size="30" font-style="italic" fill="url(#gGold)">GlowUp</text>
+  <g font-family="Inter,sans-serif" font-size="14" fill="#B9A3AE">
+    <text x="700" y="120">Services</text>
+    <text x="800" y="120">Stylists</text>
+    <text x="892" y="120">Gallery</text>
+    <text x="980" y="120">Contact</text>
+  </g>
+  <rect x="1058" y="102" width="96" height="30" rx="15" fill="url(#gRose)"/>
+  <text x="1078" y="122" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#2A1620">Book</text>
+
+  <!-- hero copy -->
+  <text x="72" y="250" font-family="ui-monospace,monospace" font-size="13" letter-spacing="4" fill="#C98BA4">BANDRA WEST · MUMBAI</text>
+  <text x="72" y="330" font-family="Georgia,serif" font-size="66" fill="#FBF3F7">Look good.</text>
+  <text x="72" y="404" font-family="Georgia,serif" font-size="66" font-style="italic" fill="url(#gRose)">Feel unstoppable.</text>
+  <text x="72" y="456" font-family="Inter,sans-serif" font-size="17" fill="#A08D97">Hair · Skin · Nails · Bridal — open 7 days a week</text>
+
+  <rect x="72" y="496" width="182" height="52" rx="26" fill="url(#gGold)"/>
+  <text x="106" y="528" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#231419">Book Appointment</text>
+  <rect x="272" y="496" width="150" height="52" rx="26" fill="none" stroke="#4A3540" stroke-width="1.5"/>
+  <text x="304" y="528" font-family="Inter,sans-serif" font-size="15" font-weight="600" fill="#D9C4CE">View Services</text>
+
+  <!-- service cards -->
+  <g>
+    <rect x="700" y="212" width="200" height="240" rx="18" fill="#241722" stroke="#392433"/>
+    <rect x="724" y="236" width="152" height="120" rx="12" fill="url(#gRose)" opacity=".55"/>
+    <rect x="724" y="376" width="98" height="12" rx="6" fill="#6E5461"/>
+    <rect x="724" y="400" width="130" height="9" rx="4.5" fill="#4A3540"/>
+    <text x="724" y="436" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#E8C88A">₹1,200</text>
+  </g>
+  <g>
+    <rect x="928" y="212" width="200" height="240" rx="18" fill="#241722" stroke="#392433"/>
+    <rect x="952" y="236" width="152" height="120" rx="12" fill="#C9A45E" opacity=".4"/>
+    <rect x="952" y="376" width="112" height="12" rx="6" fill="#6E5461"/>
+    <rect x="952" y="400" width="86" height="9" rx="4.5" fill="#4A3540"/>
+    <text x="952" y="436" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#E8C88A">₹2,800</text>
+  </g>
+
+  <!-- booking strip -->
+  <rect x="700" y="486" width="428" height="72" rx="18" fill="#1C1219" stroke="#392433"/>
+  <text x="726" y="518" font-family="Inter,sans-serif" font-size="13" fill="#8C7580">Select a slot</text>
+  <g fill="#33212D">
+    <rect x="726" y="528" width="58" height="18" rx="9"/>
+    <rect x="794" y="528" width="58" height="18" rx="9"/>
+    <rect x="930" y="528" width="58" height="18" rx="9"/>
+    <rect x="998" y="528" width="58" height="18" rx="9"/>
+  </g>
+  <rect x="862" y="528" width="58" height="18" rx="9" fill="url(#gRose)"/>
+
+  <!-- footer band -->
+  <rect x="72" y="620" width="1056" height="1" fill="#33212D"/>
+  <text x="72" y="666" font-family="Inter,sans-serif" font-size="14" fill="#6E5461">React · Vite · Tailwind CSS · Responsive booking UI</text>
+  <text x="1128" y="666" text-anchor="end" font-family="ui-monospace,monospace" font-size="13" fill="#C98BA4">Live demo</text>
+</svg>
