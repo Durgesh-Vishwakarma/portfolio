@@ -6,15 +6,15 @@ const EASE = [0.16, 1, 0.3, 1]
 /* ---------------------------------------------------------------
    Reveal — scroll-triggered entrance. Direction-aware.
 --------------------------------------------------------------- */
-export const Reveal = ({ children, delay = 0, y = 26, x = 0, className = '', once = true, as = 'div' }) => {
+export const Reveal = ({ children, delay = 0, y = 22, x = 0, className = '', once = true, as = 'div' }) => {
   const MotionTag = motion[as] || motion.div
   return (
     <MotionTag
       className={className}
       initial={{ opacity: 0, y, x }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
-      viewport={{ once, margin: '-60px' }}
-      transition={{ duration: 0.75, delay, ease: EASE }}
+      viewport={{ once, margin: '-80px' }}
+      transition={{ duration: 0.5, delay, ease: EASE }}
     >
       {children}
     </MotionTag>
@@ -24,7 +24,7 @@ export const Reveal = ({ children, delay = 0, y = 26, x = 0, className = '', onc
 /* ---------------------------------------------------------------
    Stagger — parent/child orchestration.
 --------------------------------------------------------------- */
-export const Stagger = ({ children, className = '', delay = 0, gap = 0.08, once = true, as = 'div' }) => {
+export const Stagger = ({ children, className = '', delay = 0, gap = 0.055, once = true, as = 'div' }) => {
   const MotionTag = motion[as] || motion.div
   return (
     <MotionTag
@@ -39,14 +39,14 @@ export const Stagger = ({ children, className = '', delay = 0, gap = 0.08, once 
   )
 }
 
-export const StaggerItem = ({ children, className = '', y = 22, as = 'div' }) => {
+export const StaggerItem = ({ children, className = '', y = 18, as = 'div' }) => {
   const MotionTag = motion[as] || motion.div
   return (
     <MotionTag
       className={className}
       variants={{
         hidden: { opacity: 0, y },
-        show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+        show: { opacity: 1, y: 0, transition: { duration: 0.48, ease: EASE } },
       }}
     >
       {children}
@@ -65,7 +65,7 @@ export const SplitText = ({ text = '', className = '', delay = 0, once = true })
       initial="hidden"
       whileInView="show"
       viewport={{ once, margin: '-60px' }}
-      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.045, delayChildren: delay } } }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.03, delayChildren: delay } } }}
       aria-label={text}
     >
       {words.map((w, i) => (
@@ -74,7 +74,7 @@ export const SplitText = ({ text = '', className = '', delay = 0, once = true })
             className="inline-block"
             variants={{
               hidden: { y: '105%', opacity: 0 },
-              show: { y: '0%', opacity: 1, transition: { duration: 0.8, ease: EASE } },
+              show: { y: '0%', opacity: 1, transition: { duration: 0.55, ease: EASE } },
             }}
           >
             {w}
@@ -203,46 +203,52 @@ export const Tilt = ({ children, className = '', max = 7, glare = true }) => {
 --------------------------------------------------------------- */
 export const Spotlight = ({ className = '', size = 520, color = 'rgba(109,91,255,.16)' }) => {
   const ref = useRef(null)
+  // Animate transform (compositor-only) rather than left/top (layout+paint).
   const x = useMotionValue(-9999)
   const y = useMotionValue(-9999)
-  const sx = useSpring(x, { stiffness: 120, damping: 26, mass: 0.6 })
-  const sy = useSpring(y, { stiffness: 120, damping: 26, mass: 0.6 })
+  const sx = useSpring(x, { stiffness: 120, damping: 28, mass: 0.6 })
+  const sy = useSpring(y, { stiffness: 120, damping: 28, mass: 0.6 })
 
   useEffect(() => {
     const el = ref.current?.parentElement
-    if (!el) return
-    if (window.matchMedia('(hover: none)').matches) return
+    if (!el || window.matchMedia('(hover: none)').matches) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    // Coalesce pointer moves to one update per frame.
+    let raf = 0
+    let nextX = -9999
+    let nextY = -9999
+    const flush = () => {
+      raf = 0
+      x.set(nextX)
+      y.set(nextY)
+    }
     const move = (e) => {
       const r = el.getBoundingClientRect()
-      x.set(e.clientX - r.left)
-      y.set(e.clientY - r.top)
+      nextX = e.clientX - r.left - size / 2
+      nextY = e.clientY - r.top - size / 2
+      if (!raf) raf = requestAnimationFrame(flush)
     }
     const leave = () => {
-      x.set(-9999)
-      y.set(-9999)
+      nextX = -9999
+      nextY = -9999
+      if (!raf) raf = requestAnimationFrame(flush)
     }
-    el.addEventListener('mousemove', move)
+    el.addEventListener('mousemove', move, { passive: true })
     el.addEventListener('mouseleave', leave)
     return () => {
       el.removeEventListener('mousemove', move)
       el.removeEventListener('mouseleave', leave)
+      if (raf) cancelAnimationFrame(raf)
     }
-  }, [x, y])
+  }, [x, y, size])
 
   return (
     <motion.div
       ref={ref}
       aria-hidden="true"
-      className={`pointer-events-none absolute rounded-full blur-3xl ${className}`}
-      style={{
-        width: size,
-        height: size,
-        background: color,
-        left: sx,
-        top: sy,
-        translateX: '-50%',
-        translateY: '-50%',
-      }}
+      className={`pointer-events-none absolute left-0 top-0 rounded-full blur-3xl ${className}`}
+      style={{ width: size, height: size, background: color, x: sx, y: sy, willChange: 'transform' }}
     />
   )
 }
@@ -331,10 +337,11 @@ export const ImageReveal = ({ children, className = '', delay = 0, direction = '
   return (
     <motion.div
       className={className}
-      initial={{ clipPath: clip.from, opacity: 0.4 }}
+      style={{ willChange: 'clip-path' }}
+      initial={{ clipPath: clip.from, opacity: 0.5 }}
       whileInView={{ clipPath: clip.to, opacity: 1 }}
       viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>

@@ -178,7 +178,19 @@
   }
 
   .orb {
-    @apply pointer-events-none absolute rounded-full blur-[120px];
+    @apply pointer-events-none absolute rounded-full blur-[90px];
+    /* Promote to its own compositor layer so the blur is rasterised once
+       and drift animates on the GPU instead of repainting every frame. */
+    transform: translateZ(0);
+    will-change: transform;
+    contain: layout paint style;
+  }
+
+  /* Skip rendering + layout for sections still far off-screen. The
+     intrinsic-size hint keeps the scrollbar stable so nothing jumps. */
+  .cv-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
   }
 
   /* Gradient hairline divider between sections */

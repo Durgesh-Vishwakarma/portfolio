@@ -75,8 +75,8 @@ const Footer = ({ social, name = 'Durgesh Vishwakarma' }) => {
               ))}
             </ul>
 
-            <a href="/resume.pdf" target="_blank" rel="noreferrer noopener" className="btn-ghost mt-6 w-full">
-              Download résumé
+            <a href="/resume.pdf?v=2026-07" target="_blank" rel="noreferrer noopener" className="btn-ghost mt-6 w-full">
+              Download resume
             </a>
           </div>
         </div>

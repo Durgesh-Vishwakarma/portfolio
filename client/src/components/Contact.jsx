@@ -52,9 +52,9 @@ const Contact = ({ data, social }) => {
                 </a>
               </Magnetic>
               <Magnetic>
-                <a href="/resume.pdf" target="_blank" rel="noreferrer noopener" className="btn-ghost">
+                <a href="/resume.pdf?v=2026-07" target="_blank" rel="noreferrer noopener" className="btn-ghost">
                   <FiFileText aria-hidden="true" />
-                  View résumé
+                  View resume
                 </a>
               </Magnetic>
             </div>

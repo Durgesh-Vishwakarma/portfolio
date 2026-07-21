@@ -38,9 +38,8 @@ const Hero = ({ data, social }) => {
       {/* ---- Layered background ---- */}
       <div className="absolute inset-0 bg-mesh-hero" aria-hidden="true" />
       <div className="grid-bg absolute inset-0" aria-hidden="true" />
-      <div className="orb -left-40 -top-20 h-[560px] w-[560px] animate-drift bg-violet/20" aria-hidden="true" />
-      <div className="orb -right-32 top-40 h-[460px] w-[460px] animate-drift-rev bg-magenta/15" aria-hidden="true" />
-      <div className="orb bottom-0 left-1/3 h-[380px] w-[380px] animate-drift bg-amber/10" aria-hidden="true" />
+      <div className="orb -left-40 -top-20 h-[540px] w-[540px] animate-drift bg-violet/20" aria-hidden="true" />
+      <div className="orb -right-32 top-40 h-[440px] w-[440px] animate-drift-rev bg-magenta/12" aria-hidden="true" />
       <Spotlight />
       <div className="noise" aria-hidden="true" />
       <div
@@ -98,9 +97,9 @@ const Hero = ({ data, social }) => {
                       Get in touch
                     </a>
                   </Magnetic>
-                  <a href="/resume.pdf" target="_blank" rel="noreferrer noopener" className="btn-quiet">
+                  <a href="/resume.pdf?v=2026-07" target="_blank" rel="noreferrer noopener" className="btn-quiet">
                     <FiFileText aria-hidden="true" />
-                    Résumé
+                    Resume
                   </a>
                 </div>
               </StaggerItem>
@@ -142,9 +141,9 @@ const Hero = ({ data, social }) => {
           <div className="relative lg:col-span-5">
             <Parallax distance={26}>
               <motion.div
-                initial={{ opacity: 0, y: 40, rotateX: 12, rotateY: -14 }}
+                initial={{ opacity: 0, y: 32, rotateX: 10, rotateY: -12 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0, rotateY: 0 }}
-                transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 className="perspective"
               >
                 <div className="code-window glow-border">
@@ -208,9 +207,9 @@ const Hero = ({ data, social }) => {
 
             {/* floating accent cards — depth in front of / behind the window */}
             <motion.div
-              initial={{ opacity: 0, x: -30, y: 20 }}
+              initial={{ opacity: 0, x: -24, y: 16 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="card absolute -bottom-8 -left-4 hidden px-4 py-3 shadow-e4 sm:block lg:-left-12"
             >
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ghost-500">Currently</p>
@@ -220,9 +219,9 @@ const Hero = ({ data, social }) => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30, y: -20 }}
+              initial={{ opacity: 0, x: 24, y: -16 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.9, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, delay: 0.72, ease: [0.16, 1, 0.3, 1] }}
               className="card absolute -right-3 -top-8 hidden px-4 py-3 shadow-e4 sm:block lg:-right-8"
             >
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ghost-500">Live projects</p>
@@ -235,7 +234,7 @@ const Hero = ({ data, social }) => {
         <motion.dl
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="panel mt-16 grid grid-cols-1 divide-y divide-base-750 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:mt-20"
         >
           {(data?.stats || []).map((s) => (

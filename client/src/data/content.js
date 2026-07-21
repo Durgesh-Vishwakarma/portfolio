@@ -25,7 +25,7 @@ export const content = {
 
   about: {
     image: '/profile.jpg',
-    resumeUrl: '/resume.pdf',
+    resumeUrl: '/resume.pdf?v=2026-07',
     headline: 'Full-stack engineer who owns features from schema to screen',
     paragraphs: [
       "I'm a Full Stack Developer based in Mumbai with two years of experience building web and mobile applications on React, React Native, Node.js, Express, MongoDB and PostgreSQL. Most of my work sits in the unglamorous middle of the stack — designing REST APIs, getting authentication and authorization right, and making sure the data model holds up once real users touch it.",

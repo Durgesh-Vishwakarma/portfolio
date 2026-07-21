@@ -18,7 +18,7 @@ const Section = ({
   const centered = align === 'center'
 
   return (
-    <section id={id} className={`relative py-24 sm:py-32 ${className}`} aria-labelledby={`${id}-heading`}>
+    <section id={id} className={`cv-section relative py-24 sm:py-32 ${className}`} aria-labelledby={`${id}-heading`}>
       {mesh && <div className="pointer-events-none absolute inset-0 bg-mesh-soft" aria-hidden="true" />}
       <div className="hairline absolute inset-x-0 top-0 opacity-60" aria-hidden="true" />
 

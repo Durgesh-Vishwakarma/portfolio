@@ -10,18 +10,18 @@ const ProjectCard = ({ project, index }) => {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.85, ease: EASE }}
+      transition={{ duration: 0.55, ease: EASE }}
       className="group grid items-center gap-10 lg:grid-cols-12 lg:gap-16"
     >
       {/* ---------- Preview ---------- */}
       <motion.div
-        initial={{ opacity: 0, x: reversed ? 40 : -40 }}
+        initial={{ opacity: 0, x: reversed ? 32 : -32 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.9, delay: 0.1, ease: EASE }}
+        transition={{ duration: 0.6, delay: 0.08, ease: EASE }}
         className={`lg:col-span-7 ${reversed ? 'lg:order-2' : ''}`}
       >
         <Tilt max={5} className="group">
@@ -77,10 +77,10 @@ const ProjectCard = ({ project, index }) => {
 
       {/* ---------- Details ---------- */}
       <motion.div
-        initial={{ opacity: 0, x: reversed ? -40 : 40 }}
+        initial={{ opacity: 0, x: reversed ? -32 : 32 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
+        transition={{ duration: 0.6, delay: 0.14, ease: EASE }}
         className={`lg:col-span-5 ${reversed ? 'lg:order-1' : ''}`}
       >
         <p className="mb-5 flex items-center gap-3.5">

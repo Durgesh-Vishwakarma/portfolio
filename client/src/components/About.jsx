@@ -83,7 +83,7 @@ const About = ({ data, education }) => {
             </div>
 
             <a
-              href={data?.resumeUrl || '/resume.pdf'}
+              href={data?.resumeUrl || '/resume.pdf?v=2026-07'}
               target="_blank"
               rel="noreferrer noopener"
               className="btn-ghost group/dl mt-8 w-full sm:w-auto"
@@ -92,7 +92,7 @@ const About = ({ data, education }) => {
                 className="transition-transform duration-300 group-hover/dl:translate-y-0.5"
                 aria-hidden="true"
               />
-              Download résumé (PDF)
+              Download resume (PDF)
             </a>
           </div>
         </Reveal>
