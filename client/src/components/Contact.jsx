@@ -24,7 +24,7 @@ const Contact = ({ data, social }) => {
       <div className="relative z-10">
         {/* Primary email card */}
         <Reveal>
-          <div className="card-raised mx-auto max-w-3xl overflow-hidden px-7 py-12 text-center sm:px-14 sm:py-16">
+          <div className="card-raised glow-border mx-auto max-w-3xl overflow-hidden px-7 py-12 text-center sm:px-14 sm:py-16">
             <span className="inline-grid h-14 w-14 place-items-center rounded-2xl bg-grad-violet text-2xl text-white shadow-glow-violet">
               <FiMail aria-hidden="true" />
             </span>
@@ -76,7 +76,7 @@ const Contact = ({ data, social }) => {
               href={social?.github}
               target="_blank"
               rel="noreferrer noopener"
-              className="card card-hover flex h-full flex-col items-center justify-center p-6 text-center"
+              className="card card-hover glow-border flex h-full flex-col items-center justify-center p-6 text-center"
             >
               <FaGithub className="text-lg text-violet-light" aria-hidden="true" />
               <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ghost-500">Code</p>
@@ -89,7 +89,7 @@ const Contact = ({ data, social }) => {
               href={social?.linkedin}
               target="_blank"
               rel="noreferrer noopener"
-              className="card card-hover flex h-full flex-col items-center justify-center p-6 text-center"
+              className="card card-hover glow-border flex h-full flex-col items-center justify-center p-6 text-center"
             >
               <FaLinkedin className="text-lg text-violet-light" aria-hidden="true" />
               <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ghost-500">Network</p>

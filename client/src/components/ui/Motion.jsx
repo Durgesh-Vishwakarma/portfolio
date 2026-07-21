@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useInView, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion'
 
 const EASE = [0.16, 1, 0.3, 1]
@@ -24,17 +24,20 @@ export const Reveal = ({ children, delay = 0, y = 26, x = 0, className = '', onc
 /* ---------------------------------------------------------------
    Stagger — parent/child orchestration.
 --------------------------------------------------------------- */
-export const Stagger = ({ children, className = '', delay = 0, gap = 0.08, once = true }) => (
-  <motion.div
-    className={className}
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once, margin: '-60px' }}
-    variants={{ hidden: {}, show: { transition: { staggerChildren: gap, delayChildren: delay } } }}
-  >
-    {children}
-  </motion.div>
-)
+export const Stagger = ({ children, className = '', delay = 0, gap = 0.08, once = true, as = 'div' }) => {
+  const MotionTag = motion[as] || motion.div
+  return (
+    <MotionTag
+      className={className}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once, margin: '-60px' }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: gap, delayChildren: delay } } }}
+    >
+      {children}
+    </MotionTag>
+  )
+}
 
 export const StaggerItem = ({ children, className = '', y = 22, as = 'div' }) => {
   const MotionTag = motion[as] || motion.div
@@ -87,37 +90,51 @@ export const SplitText = ({ text = '', className = '', delay = 0, once = true })
    Counter — animates a numeric value when scrolled into view.
    Accepts "2+", "150+", "4" and preserves the suffix.
 --------------------------------------------------------------- */
-export const Counter = ({ value = '0', className = '', duration = 1.6 }) => {
+export const Counter = ({ value = '0', className = '', duration = 1.8 }) => {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-  const match = String(value).match(/^(\D*)(\d+(?:\.\d+)?)(.*)$/)
-  const prefix = match?.[1] ?? ''
-  const target = match ? parseFloat(match[2]) : 0
-  const suffix = match?.[3] ?? ''
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  // Parse once per `value`. Deriving this inline would create a new array on
+  // every render, which would re-fire the effect below and restart the
+  // animation on every frame — the counter would never leave 0.
+  const parsed = useMemo(() => {
+    const m = String(value).match(/^(\D*)(\d+(?:\.\d+)?)(.*)$/)
+    if (!m) return { numeric: false }
+    return {
+      numeric: true,
+      prefix: m[1],
+      target: parseFloat(m[2]),
+      suffix: m[3],
+      decimals: m[2].includes('.') ? 1 : 0,
+    }
+  }, [value])
+
   const [n, setN] = useState(0)
 
   useEffect(() => {
-    if (!inView || !match) return
+    if (!inView || !parsed.numeric) return
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setN(parsed.target)
+      return
+    }
+
     let raf
     const start = performance.now()
     const tick = (now) => {
       const p = Math.min((now - start) / (duration * 1000), 1)
-      const eased = 1 - Math.pow(1 - p, 3)
-      setN(target * eased)
+      const eased = 1 - Math.pow(1 - p, 4)
+      setN(parsed.target * eased)
       if (p < 1) raf = requestAnimationFrame(tick)
+      else setN(parsed.target)
     }
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
-  }, [inView, target, duration, match])
+  }, [inView, parsed.numeric, parsed.target, duration])
 
-  if (!match) return <span className={className}>{value}</span>
-
-  const decimals = String(target).includes('.') ? 1 : 0
   return (
     <span ref={ref} className={className}>
-      {prefix}
-      {n.toFixed(decimals)}
-      {suffix}
+      {parsed.numeric ? `${parsed.prefix}${n.toFixed(parsed.decimals)}${parsed.suffix}` : value}
     </span>
   )
 }
@@ -299,6 +316,45 @@ export const Typewriter = ({ words = [], className = '', typeMs = 62, deleteMs =
       {text}
       <span className="ml-0.5 inline-block w-[2px] animate-blink bg-amber align-middle" style={{ height: '1em' }} />
     </span>
+  )
+}
+
+/* ---------------------------------------------------------------
+   ImageReveal — wipes an image in behind a moving mask.
+--------------------------------------------------------------- */
+export const ImageReveal = ({ children, className = '', delay = 0, direction = 'up' }) => {
+  const clip = {
+    up: { from: 'inset(100% 0% 0% 0%)', to: 'inset(0% 0% 0% 0%)' },
+    left: { from: 'inset(0% 100% 0% 0%)', to: 'inset(0% 0% 0% 0%)' },
+  }[direction]
+
+  return (
+    <motion.div
+      className={className}
+      initial={{ clipPath: clip.from, opacity: 0.4 }}
+      whileInView={{ clipPath: clip.to, opacity: 1 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+/* ---------------------------------------------------------------
+   FadeOnScroll — section softens and recedes as it scrolls away.
+--------------------------------------------------------------- */
+export const FadeOnScroll = ({ children, className = '' }) => {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
+  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.94])
+  const y = useTransform(scrollYProgress, [0, 1], [0, 70])
+
+  return (
+    <div ref={ref} className={className}>
+      <motion.div style={{ opacity, scale, y }}>{children}</motion.div>
+    </div>
   )
 }
 

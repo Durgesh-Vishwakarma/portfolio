@@ -38,7 +38,7 @@ const Experience = ({ data = [] }) => {
                   aria-hidden="true"
                 />
 
-                <div className="card card-hover p-7 sm:p-9">
+                <div className="card card-hover glow-border p-7 sm:p-9">
                   <div className="flex flex-wrap items-start justify-between gap-x-8 gap-y-3">
                     <div>
                       <h3 className="text-xl font-bold tracking-tight text-white sm:text-2xl">{job.role}</h3>

@@ -147,7 +147,7 @@ const Hero = ({ data, social }) => {
                 transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="perspective"
               >
-                <div className="code-window">
+                <div className="code-window glow-border">
                   {/* title bar */}
                   <div className="flex items-center gap-2 border-b border-base-650 bg-base-850/80 px-4 py-3">
                     <span className="code-dot bg-[#FF5F57]" />
@@ -239,12 +239,16 @@ const Hero = ({ data, social }) => {
           className="panel mt-16 grid grid-cols-1 divide-y divide-base-750 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:mt-20"
         >
           {(data?.stats || []).map((s) => (
-            <div key={s.label} className="px-6 py-6 sm:px-8">
+            <div key={s.label} className="group relative px-6 py-6 transition-colors duration-500 hover:bg-base-850/50 sm:px-8">
+              <span
+                className="absolute inset-x-6 top-0 h-px scale-x-0 bg-grad-violet transition-transform duration-700 group-hover:scale-x-100"
+                aria-hidden="true"
+              />
               <dt className="sr-only">{s.label}</dt>
               <dd>
                 <Counter
                   value={s.value}
-                  className="block text-3xl font-extrabold tracking-tight text-violet-gradient sm:text-4xl"
+                  className="block text-3xl font-extrabold tracking-tight text-violet-gradient tabular-nums sm:text-4xl"
                 />
                 <span className="mt-1.5 block text-sm leading-snug text-ghost-400">{s.label}</span>
               </dd>

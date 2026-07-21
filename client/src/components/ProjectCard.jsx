@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { FaGithub } from 'react-icons/fa'
 import { FiArrowUpRight, FiZap } from 'react-icons/fi'
-import { Parallax, Tilt } from './ui/Motion'
+import { ImageReveal, Parallax, Stagger, StaggerItem, Tilt } from './ui/Motion'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -29,7 +29,7 @@ const ProjectCard = ({ project, index }) => {
             href={project.liveUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="card card-hover block overflow-hidden p-0 shadow-e3"
+            className="card card-hover glow-border block overflow-hidden p-0 shadow-e3"
             aria-label={`Open the live demo of ${project.title}`}
           >
             {/* fake browser chrome for depth */}
@@ -45,7 +45,7 @@ const ProjectCard = ({ project, index }) => {
               </span>
             </div>
 
-            <div className="relative overflow-hidden">
+            <ImageReveal className="relative overflow-hidden" delay={0.15}>
               <Parallax distance={16}>
                 <img
                   src={project.image}
@@ -70,7 +70,7 @@ const ProjectCard = ({ project, index }) => {
               <span className="pointer-events-none absolute bottom-5 right-5 inline-flex translate-y-3 items-center gap-2 rounded-xl bg-grad-amber px-4 py-2.5 text-[12px] font-bold text-base-950 opacity-0 shadow-glow-amber transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                 Open live site <FiArrowUpRight />
               </span>
-            </div>
+            </ImageReveal>
           </a>
         </Tilt>
       </motion.div>
@@ -102,26 +102,23 @@ const ProjectCard = ({ project, index }) => {
         <p className="mt-6 text-[15px] leading-[1.8] text-ghost-300">{project.summary}</p>
 
         {project.highlights?.length > 0 && (
-          <ul className="mt-6 space-y-3 border-l-2 border-base-700 pl-5">
+          <Stagger className="mt-6 space-y-3 border-l-2 border-base-700 pl-5" gap={0.09} as="ul">
             {project.highlights.map((h, i) => (
-              <li key={i} className="relative text-sm leading-relaxed text-ghost-400">
-                <span
-                  className="absolute -left-[23px] top-2 h-1.5 w-1.5 rounded-full bg-violet"
-                  aria-hidden="true"
-                />
+              <StaggerItem key={i} y={14} as="li" className="relative text-sm leading-relaxed text-ghost-400">
+                <span className="absolute -left-[23px] top-2 h-1.5 w-1.5 rounded-full bg-violet" aria-hidden="true" />
                 {h}
-              </li>
+              </StaggerItem>
             ))}
-          </ul>
+          </Stagger>
         )}
 
-        <ul className="mt-7 flex flex-wrap gap-2">
+        <Stagger className="mt-7 flex flex-wrap gap-2" gap={0.035} as="ul">
           {project.tags?.map((t) => (
-            <li key={t} className="chip">
+            <StaggerItem key={t} y={10} as="li" className="chip">
               {t}
-            </li>
+            </StaggerItem>
           ))}
-        </ul>
+        </Stagger>
 
         <div className="mt-8 flex flex-wrap gap-3">
           <a href={project.liveUrl} target="_blank" rel="noreferrer noopener" className="btn-primary group/btn">
