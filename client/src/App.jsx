@@ -6,6 +6,7 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import { ScrollProgress } from './components/ui/Motion'
 import api from './api/axios'
 import fallback from './data/content'
 
@@ -29,6 +30,7 @@ function App() {
           about: { ...prev.about, ...remote.about },
           contact: { ...prev.contact, ...remote.contact },
           social: { ...prev.social, ...remote.social },
+          education: { ...prev.education, ...remote.education },
           experience: remote.experience?.length ? remote.experience : prev.experience,
           projects: remote.projects?.length ? remote.projects : prev.projects,
         }))
@@ -45,12 +47,13 @@ function App() {
 
   return (
     <>
+      <ScrollProgress />
       <Navbar social={data.social} />
       <main id="main">
         <Hero data={data.hero} social={data.social} />
         <About data={data.about} education={data.education} />
         <Experience data={data.experience} />
-        <Projects data={data.projects} />
+        <Projects data={data.projects} social={data.social} />
         <Contact data={data.contact} social={data.social} />
       </main>
       <Footer social={data.social} name={data.hero?.name} />

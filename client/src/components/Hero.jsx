@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { FaArrowRight, FaGithub, FaLinkedin } from 'react-icons/fa'
-import { HiOutlineDocumentText } from 'react-icons/hi'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { FiArrowRight, FiFileText, FiMapPin } from 'react-icons/fi'
+import { Counter, Magnetic, Parallax, SplitText, Spotlight, Stagger, StaggerItem, Typewriter } from './ui/Motion'
 
 const TICKER = [
   'React',
@@ -15,129 +16,251 @@ const TICKER = [
   'Tailwind CSS',
   'Jest',
   'REST APIs',
+  'Supabase',
+  'Hugging Face',
 ]
 
-const item = {
-  hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-}
+const ROLES = ['Full Stack Developer', 'MERN Specialist', 'React Native Developer', 'API Engineer']
+
+const CODE = [
+  { t: 'const', c: 'text-violet-light' },
+  { t: ' durgesh ', c: 'text-white' },
+  { t: '= {', c: 'text-ghost-400' },
+]
 
 const Hero = ({ data, social }) => {
   return (
     <section
       id="top"
-      className="relative grid min-h-[100svh] items-center overflow-hidden pb-24 pt-28 sm:pt-32"
+      className="relative flex min-h-[100svh] items-center overflow-hidden pb-28 pt-32 lg:pb-32"
       aria-labelledby="hero-heading"
     >
-      <div className="grid-bg absolute inset-0 opacity-70" aria-hidden="true" />
-      <div className="glow-orb -left-32 top-0 h-[520px] w-[520px] bg-accent/10" aria-hidden="true" />
-      <div className="glow-orb -right-40 bottom-0 h-[460px] w-[460px] bg-accent-alt/10" aria-hidden="true" />
+      {/* ---- Layered background ---- */}
+      <div className="absolute inset-0 bg-mesh-hero" aria-hidden="true" />
+      <div className="grid-bg absolute inset-0" aria-hidden="true" />
+      <div className="orb -left-40 -top-20 h-[560px] w-[560px] animate-drift bg-violet/20" aria-hidden="true" />
+      <div className="orb -right-32 top-40 h-[460px] w-[460px] animate-drift-rev bg-magenta/15" aria-hidden="true" />
+      <div className="orb bottom-0 left-1/3 h-[380px] w-[380px] animate-drift bg-amber/10" aria-hidden="true" />
+      <Spotlight />
+      <div className="noise" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-ink-950 to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-base-900 via-base-900/70 to-transparent"
         aria-hidden="true"
       />
 
       <div className="container-page relative z-10">
-        <motion.div initial="hidden" animate="show" transition={{ staggerChildren: 0.09 }} className="max-w-3xl">
-          <motion.p variants={item} className="mb-6 flex items-center gap-2.5">
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-            </span>
-            <span className="font-mono text-xs uppercase tracking-[0.18em] text-mist-300">
-              {data?.availability || 'Open to opportunities'}
-            </span>
-          </motion.p>
+        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+          {/* ================= Left: copy ================= */}
+          <div className="lg:col-span-7">
+            <Stagger className="max-w-2xl">
+              <StaggerItem>
+                <p className="eyebrow mb-7">
+                  <span className="relative flex h-2 w-2" aria-hidden="true">
+                    <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-amber" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-amber" />
+                  </span>
+                  {data?.availability || 'Open to opportunities'}
+                </p>
+              </StaggerItem>
 
-          <motion.h1
-            id="hero-heading"
-            variants={item}
-            className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
-          >
-            <span className="text-gradient">{data?.name || 'Durgesh Vishwakarma'}</span>
-          </motion.h1>
+              <h1
+                id="hero-heading"
+                className="text-[2.7rem] font-extrabold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl"
+              >
+                <SplitText text="Durgesh" className="block text-white" />
+                <SplitText text="Vishwakarma" className="block text-gradient" delay={0.12} />
+              </h1>
 
-          <motion.p variants={item} className="mt-4 font-mono text-base text-accent sm:text-lg">
-            {data?.title || 'Full Stack Developer'}
-            <span className="mx-2 text-ink-500">/</span>
-            <span className="text-mist-400">{data?.tagline || 'MERN · Node.js'}</span>
-          </motion.p>
+              <StaggerItem>
+                <p className="mt-6 flex min-h-[2rem] flex-wrap items-center gap-x-3 font-mono text-base text-ghost-300 sm:text-lg">
+                  <span className="text-ghost-500">{'>'}</span>
+                  <Typewriter words={ROLES} className="font-semibold text-amber" />
+                </p>
+              </StaggerItem>
 
-          <motion.p variants={item} className="mt-7 max-w-2xl text-base leading-relaxed text-mist-300 sm:text-lg">
-            {data?.intro}
-          </motion.p>
+              <StaggerItem>
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-ghost-300 sm:text-lg">{data?.intro}</p>
+              </StaggerItem>
 
-          <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-3">
-            <a href="#projects" className="btn-primary group">
-              View my work
-              <FaArrowRight
-                className="text-xs transition-transform group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
-            </a>
-            <a href="#contact" className="btn-ghost">
-              Get in touch
-            </a>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="btn text-mist-300 hover:text-accent"
+              <StaggerItem>
+                <div className="mt-10 flex flex-wrap items-center gap-3">
+                  <Magnetic>
+                    <a href="#projects" className="btn-primary group">
+                      View my work
+                      <FiArrowRight
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                        aria-hidden="true"
+                      />
+                    </a>
+                  </Magnetic>
+                  <Magnetic>
+                    <a href="#contact" className="btn-ghost">
+                      Get in touch
+                    </a>
+                  </Magnetic>
+                  <a href="/resume.pdf" target="_blank" rel="noreferrer noopener" className="btn-quiet">
+                    <FiFileText aria-hidden="true" />
+                    Résumé
+                  </a>
+                </div>
+              </StaggerItem>
+
+              <StaggerItem>
+                <ul className="mt-10 flex flex-wrap items-center gap-3">
+                  <li>
+                    <a
+                      href={social?.github}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label="GitHub profile"
+                      className="grid h-11 w-11 place-items-center rounded-xl border border-base-650 bg-base-800/70 text-ghost-300 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-violet/60 hover:text-violet-soft hover:shadow-glow-violet"
+                    >
+                      <FaGithub />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={social?.linkedin}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label="LinkedIn profile"
+                      className="grid h-11 w-11 place-items-center rounded-xl border border-base-650 bg-base-800/70 text-ghost-300 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-violet/60 hover:text-violet-soft hover:shadow-glow-violet"
+                    >
+                      <FaLinkedin />
+                    </a>
+                  </li>
+                  <li className="ml-1 inline-flex items-center gap-1.5 font-mono text-xs text-ghost-500">
+                    <FiMapPin aria-hidden="true" />
+                    {data?.location}
+                  </li>
+                </ul>
+              </StaggerItem>
+            </Stagger>
+          </div>
+
+          {/* ================= Right: code window ================= */}
+          <div className="relative lg:col-span-5">
+            <Parallax distance={26}>
+              <motion.div
+                initial={{ opacity: 0, y: 40, rotateX: 12, rotateY: -14 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0, rotateY: 0 }}
+                transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="perspective"
+              >
+                <div className="code-window">
+                  {/* title bar */}
+                  <div className="flex items-center gap-2 border-b border-base-650 bg-base-850/80 px-4 py-3">
+                    <span className="code-dot bg-[#FF5F57]" />
+                    <span className="code-dot bg-[#FEBC2E]" />
+                    <span className="code-dot bg-[#28C840]" />
+                    <span className="ml-3 font-mono text-[11px] text-ghost-500">developer.ts</span>
+                  </div>
+
+                  {/* code body */}
+                  <pre className="overflow-x-auto px-5 py-5 font-mono text-[12.5px] leading-[1.85] sm:text-[13px]">
+                    <code>
+                      <span className="text-ghost-600 select-none">1  </span>
+                      {CODE.map((s, i) => (
+                        <span key={i} className={s.c}>
+                          {s.t}
+                        </span>
+                      ))}
+                      {'\n'}
+                      <span className="text-ghost-600 select-none">2  </span>
+                      <span className="text-ghost-400">{'  role: '}</span>
+                      <span className="text-amber">{"'Full Stack Developer'"}</span>
+                      <span className="text-ghost-400">,</span>
+                      {'\n'}
+                      <span className="text-ghost-600 select-none">3  </span>
+                      <span className="text-ghost-400">{'  base: '}</span>
+                      <span className="text-amber">{"'Mumbai, India'"}</span>
+                      <span className="text-ghost-400">,</span>
+                      {'\n'}
+                      <span className="text-ghost-600 select-none">4  </span>
+                      <span className="text-ghost-400">{'  stack: ['}</span>
+                      <span className="text-violet-soft">{"'React'"}</span>
+                      <span className="text-ghost-400">, </span>
+                      <span className="text-violet-soft">{"'Node'"}</span>
+                      <span className="text-ghost-400">, </span>
+                      <span className="text-violet-soft">{"'Mongo'"}</span>
+                      <span className="text-ghost-400">],</span>
+                      {'\n'}
+                      <span className="text-ghost-600 select-none">5  </span>
+                      <span className="text-ghost-400">{'  years: '}</span>
+                      <span className="text-violet-light">2</span>
+                      <span className="text-ghost-400">,</span>
+                      {'\n'}
+                      <span className="text-ghost-600 select-none">6  </span>
+                      <span className="text-ghost-400">{'  shipping: '}</span>
+                      <span className="text-violet-light">true</span>
+                      <span className="text-ghost-400">,</span>
+                      {'\n'}
+                      <span className="text-ghost-600 select-none">7  </span>
+                      <span className="text-ghost-400">{'}'}</span>
+                      {'\n'}
+                      <span className="text-ghost-600 select-none">8  </span>
+                      <span className="animate-blink text-amber">▋</span>
+                    </code>
+                  </pre>
+                </div>
+              </motion.div>
+            </Parallax>
+
+            {/* floating accent cards — depth in front of / behind the window */}
+            <motion.div
+              initial={{ opacity: 0, x: -30, y: 20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
+              className="card absolute -bottom-8 -left-4 hidden px-4 py-3 shadow-e4 sm:block lg:-left-12"
             >
-              <HiOutlineDocumentText className="text-base" aria-hidden="true" />
-              Résumé
-            </a>
-          </motion.div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ghost-500">Currently</p>
+              <p className="mt-1 text-sm font-semibold text-white">
+                Full Stack Dev <span className="text-violet-light">@ Servora</span>
+              </p>
+            </motion.div>
 
-          <motion.ul variants={item} className="mt-10 flex items-center gap-3">
-            <li>
-              <a
-                href={social?.github}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="GitHub profile"
-                className="grid h-10 w-10 place-items-center rounded-xl border border-ink-700 text-mist-300 transition-colors hover:border-accent/50 hover:text-accent"
-              >
-                <FaGithub />
-              </a>
-            </li>
-            <li>
-              <a
-                href={social?.linkedin}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="LinkedIn profile"
-                className="grid h-10 w-10 place-items-center rounded-xl border border-ink-700 text-mist-300 transition-colors hover:border-accent/50 hover:text-accent"
-              >
-                <FaLinkedin />
-              </a>
-            </li>
-            <li className="ml-1 font-mono text-xs text-mist-500">{data?.location}</li>
-          </motion.ul>
-        </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30, y: -20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.9, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+              className="card absolute -right-3 -top-8 hidden px-4 py-3 shadow-e4 sm:block lg:-right-8"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ghost-500">Live projects</p>
+              <p className="mt-1 text-sm font-semibold text-amber">4 in production</p>
+            </motion.div>
+          </div>
+        </div>
 
+        {/* ================= Stats bar ================= */}
         <motion.dl
-          initial={{ opacity: 0, y: 22 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-16 grid max-w-3xl grid-cols-3 gap-px overflow-hidden rounded-2xl border border-ink-700 bg-ink-700"
+          transition={{ duration: 0.9, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="panel mt-16 grid grid-cols-1 divide-y divide-base-750 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:mt-20"
         >
           {(data?.stats || []).map((s) => (
-            <div key={s.label} className="bg-ink-900 px-4 py-5 sm:px-6">
+            <div key={s.label} className="px-6 py-6 sm:px-8">
               <dt className="sr-only">{s.label}</dt>
               <dd>
-                <span className="block text-2xl font-bold text-white sm:text-3xl">{s.value}</span>
-                <span className="mt-1 block text-xs leading-snug text-mist-400 sm:text-sm">{s.label}</span>
+                <Counter
+                  value={s.value}
+                  className="block text-3xl font-extrabold tracking-tight text-violet-gradient sm:text-4xl"
+                />
+                <span className="mt-1.5 block text-sm leading-snug text-ghost-400">{s.label}</span>
               </dd>
             </div>
           ))}
         </motion.dl>
       </div>
 
-      <div className="mask-fade-x absolute inset-x-0 bottom-0 z-10 overflow-hidden border-t border-ink-800 py-4">
-        <div className="flex w-max animate-marquee gap-8" aria-hidden="true">
+      {/* ================= Tech ticker ================= */}
+      <div className="mask-fade-x absolute inset-x-0 bottom-0 z-10 overflow-hidden border-t border-base-750 bg-base-950/60 py-4 backdrop-blur">
+        <div className="flex w-max animate-marquee gap-10" aria-hidden="true">
           {[...TICKER, ...TICKER].map((t, i) => (
-            <span key={`${t}-${i}`} className="whitespace-nowrap font-mono text-xs text-ink-500">
+            <span
+              key={`${t}-${i}`}
+              className="whitespace-nowrap font-mono text-xs tracking-wide text-ghost-600 transition-colors hover:text-violet-soft"
+            >
               {t}
             </span>
           ))}
